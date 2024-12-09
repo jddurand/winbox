@@ -50,7 +50,9 @@
     "LICENSE"
   ],
   "readme": "README.md",
-  "dependencies": {},
+  "dependencies": {
+    "google-closure-compiler-windows": "^20240317.0.0"
+  },
   "devDependencies": {
     "base64-img": "^1.0.4",
     "cpx": "^1.5.0",

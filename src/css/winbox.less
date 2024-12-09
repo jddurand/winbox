@@ -223,17 +223,17 @@ body > .wb-body{
 .winbox:fullscreen .wb-title,
 */
 
-.winbox.modal .wb-body ~ div,
-.winbox.modal .wb-drag,
-.winbox.min .wb-body ~ div,
-.winbox.max .wb-body ~ div {
+.winbox.wb-modal .wb-body ~ div,
+.winbox.wb-modal .wb-drag,
+.winbox.wb-minimized .wb-body ~ div,
+.winbox.wb-maximized .wb-body ~ div {
   pointer-events: none;
 }
-.winbox.max .wb-drag{
+.winbox.wb-maximized .wb-drag{
   cursor: default;
 }
 
-.winbox.min {
+.winbox.wb-minimized {
   .wb-full,
   .wb-min {
     display: none;
@@ -246,16 +246,16 @@ body > .wb-body{
   }
 }
 
-.winbox.hide {
+.winbox.wb-hidden {
   display: none;
   //visibility: hidden;
 }
 
-.winbox.max {
+.winbox.wb-maximized {
   box-shadow: none;
 }
 
-.winbox.max .wb-body {
+.winbox.wb-maximized .wb-body {
   margin: 0 !important;
 }
 
@@ -274,7 +274,7 @@ body.wb-lock iframe {
   pointer-events: none;
 }
 
-.winbox.modal{
+.winbox.wb-modal{
   &:before{
     content: '';
     position: absolute;
