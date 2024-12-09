@@ -26,7 +26,7 @@
   "preferGlobal": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/nextapps-de/winbox.git"
+    "url": "github:jddurand/winbox#async"
   },
   "scripts": {
     "copy": "cpx \"src/img/*.*\" dist/img/",
