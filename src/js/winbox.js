@@ -944,7 +944,7 @@ function has_fullscreen(){
 }
 
 /**
- * @return {boolean|void}
+ * @return {Promise<boolean>|Promise<void>}
  */
 
 async function cancel_fullscreen(){

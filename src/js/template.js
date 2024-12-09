@@ -1,5 +1,5 @@
 /**
-  @type null|HTMLDivElement
+ * @type {null|Element}
  */
 let template = null;
 const templateHTML = (
@@ -33,6 +33,9 @@ const templateHTML = (
     //'</div>'
 );
 
+/**
+ * @return {Element}
+ */
 export default function(tpl){
     if (!template) {
         template = document.createElement('div');

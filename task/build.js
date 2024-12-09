@@ -60,7 +60,7 @@ const parameter = (function(opt){
     //jscomp_error: "newCheckTypesExtraChecks",
     generate_exports: true,
     export_local_property_definitions: true,
-    language_in: "ECMASCRIPT6_STRICT",
+    language_in: "ECMASCRIPT_2017",
     language_out: "ECMASCRIPT5_STRICT",
     process_closure_primitives: true,
     summary_detail_level: 3,
