@@ -194,32 +194,32 @@ body > .wb-body{
 .winbox:fullscreen > div,
 .winbox:fullscreen .wb-title,
 */
-.winbox.modal .wb-body ~ div,
-.winbox.modal .wb-drag,
-.winbox.min .wb-body ~ div,
-.winbox.max .wb-body ~ div {
+.winbox.wb-modal .wb-body ~ div,
+.winbox.wb-modal .wb-drag,
+.winbox.wb-minimized .wb-body ~ div,
+.winbox.wb-maximized .wb-body ~ div {
   pointer-events: none;
 }
-.winbox.max .wb-drag {
+.winbox.wb-maximized .wb-drag {
   cursor: default;
 }
-.winbox.min .wb-full,
-.winbox.min .wb-min {
+.winbox.wb-minimized .wb-full,
+.winbox.wb-minimized .wb-min {
   display: none;
 }
-.winbox.min .wb-drag {
+.winbox.wb-minimized .wb-drag {
   cursor: default;
 }
-.winbox.min .wb-body > * {
+.winbox.wb-minimized .wb-body > * {
   display: none;
 }
-.winbox.hide {
+.winbox.wb-hidden {
   display: none;
 }
-.winbox.max {
+.winbox.wb-maximized {
   box-shadow: none;
 }
-.winbox.max .wb-body {
+.winbox.wb-maximized .wb-body {
   margin: 0 !important;
 }
 .winbox iframe {
@@ -235,7 +235,7 @@ body.wb-lock .winbox {
 body.wb-lock iframe {
   pointer-events: none;
 }
-.winbox.modal:before {
+.winbox.wb-modal:before {
   content: '';
   position: absolute;
   top: 0;
@@ -245,7 +245,7 @@ body.wb-lock iframe {
   background: inherit;
   border-radius: inherit;
 }
-.winbox.modal:after {
+.winbox.wb-modal:after {
   content: '';
   position: absolute;
   top: -50vh;
@@ -256,9 +256,9 @@ body.wb-lock iframe {
   animation: wb-fade-in 0.2s ease-out forwards;
   z-index: -1;
 }
-.winbox.modal .wb-min,
-.winbox.modal .wb-max,
-.winbox.modal .wb-full {
+.winbox.wb-modal .wb-min,
+.winbox.wb-modal .wb-max,
+.winbox.wb-modal .wb-full {
   display: none;
 }
 @keyframes wb-fade-in {
@@ -269,34 +269,34 @@ body.wb-lock iframe {
     opacity: 0.85;
   }
 }
-.no-animation {
+.wb-no-animation {
   transition: none;
 }
-.no-shadow {
+.wb-no-shadow {
   box-shadow: none;
 }
-.no-header .wb-header {
+.wb-no-header .wb-header {
   display: none;
 }
-.no-header .wb-body {
+.wb-no-header .wb-body {
   top: 0;
 }
-.no-min .wb-min {
+.wb-no-min .wb-min {
   display: none;
 }
-.no-max .wb-max {
+.wb-no-max .wb-max {
   display: none;
 }
-.no-full .wb-full {
+.wb-no-full .wb-full {
   display: none;
 }
-.no-close .wb-close {
+.wb-no-close .wb-close {
   display: none;
 }
-.no-resize .wb-body ~ div {
+.wb-no-resize .wb-body ~ div {
   display: none;
 }
-.no-move:not(.min) .wb-title {
+.wb-no-move:not(.wb-minimized) .wb-title {
   pointer-events: none;
 }
 .wb-body .wb-hide {

@@ -6,8 +6,6 @@
  * https://github.com/nextapps-de/winbox
  */
 
-// TODO: rename control amd state classes (min, max, modal, focus, ...) #62
-
 import template from "./template.js";
 import { addListener, removeListener, setStyle, setText, getByClass, addClass, removeClass, hasClass, preventEvent } from "./helper.js";
 
@@ -227,7 +225,7 @@ function register(self){
     }
     else{
 
-        self.addClass("no-full");
+        self.addClass("wb-no-full");
     }
 
     addListener(getByClass(self.dom, "wb-close"), "click", async function(event){
@@ -259,7 +257,7 @@ async function remove_min_stack(self){
 
     stack_min.splice(stack_min.indexOf(self), 1);
     await update_min_stack();
-    self.removeClass("min");
+    self.removeClass("wb-minimized");
     self.min = false;
     self.dom.title = "";
 }
@@ -344,7 +342,7 @@ function addWindowListener(self, dir){
                 return;
             }
 
-            if(!self.hasClass("no-max")){
+            if(!self.hasClass("wb-no-max")){
 
                 const now = Date.now();
                 const diff = now - dblclick_timer;
@@ -414,7 +412,7 @@ function addWindowListener(self, dir){
 
         if(dir === "drag"){
 
-            if(self.hasClass("no-move")) return;
+            if(self.hasClass("wb-no-move")) return;
 
             self.x += offsetX;
             self.y += offsetY;
@@ -692,7 +690,7 @@ WinBox.prototype.focus = async function(state){
 
         setStyle(this.dom, "z-index", ++index_counter);
         this.index = index_counter;
-        this.addClass("focus");
+        this.addClass("wb-focus");
         this.focused = true;
         this.onfocus && await this.onfocus();
     }
@@ -714,7 +712,7 @@ WinBox.prototype.blur = async function(state){
 
     if(this.focused){
 
-        this.removeClass("focus");
+        this.removeClass("wb-focus");
         this.focused = false;
         this.onblur && await this.onblur();
     }
@@ -738,7 +736,7 @@ WinBox.prototype.hide = async function(state){
 
         this.onhide && await this.onhide();
         this.hidden = true;
-        return this.addClass("hide");
+        return this.addClass("wb-hidden");
     }
 };
 
@@ -758,7 +756,7 @@ WinBox.prototype.show = async function(state){
 
         this.onshow && await this.onshow();
         this.hidden = false;
-        return this.removeClass("hide");
+        return this.removeClass("wb-hidden");
     }
 };
 
@@ -781,7 +779,7 @@ WinBox.prototype.minimize = async function(state){
 
     if(this.max){
 
-        this.removeClass("max");
+        this.removeClass("wb-maximized");
         this.max = false;
     }
 
@@ -790,7 +788,7 @@ WinBox.prototype.minimize = async function(state){
         stack_min.push(this);
         await update_min_stack();
         this.dom.title = this.title;
-        this.addClass("min");
+        this.addClass("wb-minimized");
         this.min = true;
 
         if(this.focused){
@@ -846,7 +844,7 @@ WinBox.prototype.restore = async function(){
     if(this.max){
 
         this.max = false;
-        this.removeClass("max");
+        this.removeClass("wb-maximized");
         await this.resize();
         await this.move();
         this.onrestore && await this.onrestore();
@@ -879,7 +877,7 @@ WinBox.prototype.maximize = async function(state){
 
     if(!this.max){
 
-        this.addClass("max");
+        this.addClass("wb-maximized");
         await this.resize(
             root_w - this.left - this.right,
             root_h - this.top - this.bottom /* - 1 */,
@@ -1258,7 +1256,7 @@ WinBox.prototype.initialize = async function(){
 
     this.dom = template(tpl);
     this.dom.id = this.id = id || ("winbox-" + (++id_counter));
-    this.dom.className = "winbox" + (classname ? " " + (typeof classname === "string" ? classname : classname.join(" ")) : "") + (modal ? " modal" : "");
+    this.dom.className = "winbox" + (classname ? " " + (typeof classname === "string" ? classname : classname.join(" ")) : "") + (modal ? " wb-modal" : "");
     this.dom["winbox"] = this;
     this.window = this.dom;
     this.body = getByClass(this.dom, "wb-body");

@@ -194,9 +194,18 @@ Constructor:
 
 - new <a href="#winbox.new">**WinBox**(title, options\<key: value\>)</a> : winbox
 
+You **must** follow this call by:
+
+`await winbox.initialize()`
+
 Global methods:
 
 - <a href="#winbox.new">WinBox.**new**(title, options\<key: value\>)</a> : winbox
+
+You **must** follow this call by:
+
+`await winbox.initialize()`
+
 - <a href="#winbox.stack">WinBox.**stack**()</a> : Array\<winbox\>
 
 Instance member methods:
@@ -1189,47 +1198,47 @@ WinBox provides you some built-in control classes you can pass when creating a w
         <th align="left">Description</th>
     </tr>
     <tr>
-        <td>no-animation</td>
+        <td>wb-no-animation</td>
         <td>Disables the windows transition animation</td>
     </tr>
     <tr></tr>
     <tr>
-        <td>no-shadow</td>
+        <td>wb-no-shadow</td>
         <td>Disables the windows drop shadow</td>
     </tr>
     <tr></tr>
     <tr>
-        <td>no-header</td>
+        <td>wb-no-header</td>
         <td>Hide the window header incl. title and toolbar</td>
     </tr>
     <tr></tr>
     <tr>
-        <td>no-min</td>
+        <td>wb-no-min</td>
         <td>Hide the minimize icon</td>
     </tr>
     <tr></tr>
     <tr>
-        <td>no-max</td>
+        <td>wb-no-max</td>
         <td>Hide the maximize icon</td>
     </tr>
     <tr></tr>
     <tr>
-        <td>no-full</td>
+        <td>wb-no-full</td>
         <td>Hide the fullscreen icon</td>
     </tr>
     <tr></tr>
     <tr>
-        <td>no-close</td>
+        <td>wb-no-close</td>
         <td>Hide the close icon</td>
     </tr>
     <tr></tr>
     <tr>
-        <td>no-resize</td>
+        <td>wb-no-resize</td>
         <td>Disables the window resizing capability</td>
     </tr>
     <tr></tr>
     <tr>
-        <td>no-move</td>
+        <td>wb-no-move</td>
         <td>Disables the window moving capability</td>
     </tr>
 </table>
@@ -1239,7 +1248,7 @@ WinBox provides you some built-in control classes you can pass when creating a w
 Pass in classnames when creating the window to apply behaviour:
 ```js
 const winbox = WinBox({
-    class: [ "no-min", "no-max", "no-full", "no-resize", "no-move" ]
+    class: [ "wb-no-min", "wb-no-max", "wb-no-full", "wb-no-resize", "wb-no-move" ]
 });
 ```
 
@@ -1248,7 +1257,7 @@ const winbox = WinBox({
 Alternatively you can use a whitespace separated string:
 ```js
 const winbox = WinBox({
-    class: "no-min no-max no-full no-resize no-move"
+    class: "wb-no-min wb-no-max wb-no-full wb-no-resize wb-no-move"
 });
 ```
 
@@ -1258,20 +1267,20 @@ You can add or remove all control classes from above along the window's lifetime
 ```js
 const winbox = WinBox();
 
-winbox.addClass("no-resize")
-      .addClass("no-move");
+winbox.addClass("wb-no-resize")
+      .addClass("wb-no-move");
 ```
 ```js
-winbox.removeClass("no-resize")
-      .removeClass("no-move");
+winbox.removeClass("wb-no-resize")
+      .removeClass("wb-no-move");
 ```
 ```js
-winbox.toggleClass("no-resize")
-      .toggleClass("no-move");
+winbox.toggleClass("wb-no-resize")
+      .toggleClass("wb-no-move");
 ```
 ```js
-const state = winbox.hasClass("no-resize") &&
-              winbox.hasClass("no-move");
+const state = winbox.hasClass("wb-no-resize") &&
+              winbox.hasClass("wb-no-move");
 ```
 
 ## Custom Splitscreen
