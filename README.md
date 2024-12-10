@@ -404,6 +404,12 @@ Callback methods:
     </tr>
     <tr></tr>
     <tr>
+        <td>header</td>
+        <td>number</td>
+        <td>Set the header height of the window (only in pixel css units).</td>
+    </tr>
+    <tr></tr>
+    <tr>
         <td>icon</td>
         <td>string</td>
         <td>Make the titlebar icon visible and set the image source to this url.</td>
@@ -486,6 +492,174 @@ Callback methods:
         <td>function()</td>
         <td>Callback triggered when a window lost the focused state.</td>
     </tr>
+    <tr></tr>
+    <tr>
+        <td>window_cls</td>
+        <td>string</td>
+        <td>Class of the window - default to "wb-window".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>header_cls</td>
+        <td>string</td>
+        <td>Class of the header - default to "wb-header".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>control_cls</td>
+        <td>string</td>
+        <td>Class of the control (a div that contains minimize, maximize, full and close actions) - default to "wb-control".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>icon_cls</td>
+        <td>string</td>
+        <td>Class of the icon div - default to "wb-icon".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>title_cls</td>
+        <td>string</td>
+        <td>Class of the title div - default to "wb-title".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>body_cls</td>
+        <td>string</td>
+        <td>Class of the body div - default to "wb-body".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>modal_cls</td>
+        <td>string</td>
+        <td>Class of the modal - default to "wb-modal".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>min_cls</td>
+        <td>string</td>
+        <td>Class of the minimize span - default to "wb-min".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>minimized_cls</td>
+        <td>string</td>
+        <td>Class of the minimized span - default to "wb-minimized".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>max_cls</td>
+        <td>string</td>
+        <td>Class of the maximize span - default to "wb-max".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>maximized_cls</td>
+        <td>string</td>
+        <td>Class of the maximized span - default to "wb-maximized".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>no_max_cls</td>
+        <td>string</td>
+        <td>Class of the span if you do not want maximize - default to "wb-no-max".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>full_cls</td>
+        <td>string</td>
+        <td>Class of the full span - default to "wb-full".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>no_full_cls</td>
+        <td>string</td>
+        <td>Class of the span if you do not want to be able to go full - default to "wb-no-full".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>no_move_cls</td>
+        <td>string</td>
+        <td>Class of the span if you do not want to be able to drag - default to "wb-no-move".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>lock_cls</td>
+        <td>string</td>
+        <td>Class of the span that is locked when doing mouse or touch events - default to "wb-lock".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>focus_cls</td>
+        <td>string</td>
+        <td>Class of the span that has focus - default to "wb-focus".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>hidden_cls</td>
+        <td>string</td>
+        <td>Class of the span that is hidden - default to "wb-hidden".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>drag_cls</td>
+        <td>string</td>
+        <td>Class of the span that holding drag capability - default to "wb-drag".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>n_cls</td>
+        <td>string</td>
+        <td>Class of the span that holding north movement - default to "wb-n".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>s_cls</td>
+        <td>string</td>
+        <td>Class of the span that holding south movement - default to "wb-s".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>w_cls</td>
+        <td>string</td>
+        <td>Class of the span that holding west movement - default to "wb-w".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>e_cls</td>
+        <td>string</td>
+        <td>Class of the span that holding east movement - default to "wb-e".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>nw_cls</td>
+        <td>string</td>
+        <td>Class of the span that holding north-west movement - default to "wb-nw".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>ne_cls</td>
+        <td>string</td>
+        <td>Class of the span that holding north-east movement - default to "wb-ne".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>se_cls</td>
+        <td>string</td>
+        <td>Class of the span that holding south-east movement - default to "wb-se".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>sw_cls</td>
+        <td>string</td>
+        <td>Class of the span that holding south-west movement - default to "wb-sw".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>close_cls</td>
+        <td>string</td>
+        <td>Class of the close span - default to "wb-close".</td>
+    </tr>
 </table>
 
 ## Create and Setup Window
@@ -496,23 +670,21 @@ Callback methods:
 > When no `root` was specified the window will append to the `document.body`.
 
 ```js
-new WinBox("Window Title");
+winbox = new WinBox("Window Title");
+await winbox.initialize();
 ```
 
 Alternatively:
 ```js
-WinBox.new("Window Title");
-```
-
-Alternatively:
-```js
-new WinBox({ title: "Window Title" });
+winbox = new WinBox({ title: "Window Title" });
+await winbox.initialize();
 ```
 
 Alternatively:
 <a name="winbox.setTitle"></a>
 ```js
 var winbox = WinBox();
+await winbox.initialize();
 winbox.setTitle("Window Title");
 ```
 

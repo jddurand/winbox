@@ -181,17 +181,17 @@ async function setup(){
 
 function register(self){
 
-    addWindowListener(self, "drag");
-    addWindowListener(self, "n");
-    addWindowListener(self, "s");
-    addWindowListener(self, "w");
-    addWindowListener(self, "e");
-    addWindowListener(self, "nw");
-    addWindowListener(self, "ne");
-    addWindowListener(self, "se");
-    addWindowListener(self, "sw");
+    addWindowListener(self, "drag", self.drag_cls);
+    addWindowListener(self, "n", self.n_cls);
+    addWindowListener(self, "s", self.s_cls);
+    addWindowListener(self, "w", self.w_cls);
+    addWindowListener(self, "e", self.e_cls);
+    addWindowListener(self, "nw", self.nw_cls);
+    addWindowListener(self, "ne", self.ne_cls);
+    addWindowListener(self, "se", self.se_cls);
+    addWindowListener(self, "sw", self.sw_cls);
 
-    addListener(getByClass(self.dom, "wb-min"), "click", async function(event){
+    addListener(getByClass(self.dom, self.min_cls), "click", async function(event){
 
         preventEvent(event);
         if (self.min) {
@@ -202,7 +202,7 @@ function register(self){
 	}
     });
 
-    addListener(getByClass(self.dom, "wb-max"), "click", async function(event){
+    addListener(getByClass(self.dom, self.max_cls), "click", async function(event){
 
         preventEvent(event);
         if (self.max) {
@@ -216,7 +216,7 @@ function register(self){
 
     if(prefix_request){
 
-        addListener(getByClass(self.dom, "wb-full"), "click", async function(event){
+        addListener(getByClass(self.dom, self.full_cls), "click", async function(event){
 
             preventEvent(event);
             await self.fullscreen();
@@ -225,10 +225,10 @@ function register(self){
     }
     else{
 
-        self.addClass("wb-no-full");
+        self.addClass(self.no_full_cls);
     }
 
-    addListener(getByClass(self.dom, "wb-close"), "click", async function(event){
+    addListener(getByClass(self.dom, self.close_cls), "click", async function(event){
 
         preventEvent(event);
         (await self.close()) || (self = null);
@@ -257,7 +257,7 @@ async function remove_min_stack(self){
 
     stack_min.splice(stack_min.indexOf(self), 1);
     await update_min_stack();
-    self.removeClass("wb-minimized");
+    self.removeClass(self.minimized_cls);
     self.min = false;
     self.dom.title = "";
 }
@@ -300,9 +300,9 @@ async function update_min_stack(){
  * @param {string} dir
  */
 
-function addWindowListener(self, dir){
+function addWindowListener(self, dir, cls){
 
-    const node = getByClass(self.dom, "wb-" + dir);
+    const node = getByClass(self.dom, cls);
     if(!node) return;
 
     let touch, x, y;
@@ -342,7 +342,7 @@ function addWindowListener(self, dir){
                 return;
             }
 
-            if(!self.hasClass("wb-no-max")){
+            if(!self.hasClass(self.no_max_cls)){
 
                 const now = Date.now();
                 const diff = now - dblclick_timer;
@@ -359,7 +359,7 @@ function addWindowListener(self, dir){
 
         if(/*!self.max &&*/ !self.min){
 
-            addClass(body, "wb-lock");
+            addClass(body, self.lock_cls);
             use_raf && asyncRaf(async() => { await rafCallback(); });
 
             if((touch = event.touches) && (touch = touch[0])){
@@ -412,7 +412,7 @@ function addWindowListener(self, dir){
 
         if(dir === "drag"){
 
-            if(self.hasClass("wb-no-move")) return;
+            if(self.hasClass(self.no_move_cls)) return;
 
             self.x += offsetX;
             self.y += offsetY;
@@ -522,7 +522,7 @@ function addWindowListener(self, dir){
     async function handler_mouseup(event){
 
         preventEvent(event);
-        removeClass(body, "wb-lock");
+        removeClass(body, self.lock_cls);
         use_raf && cancelAnimationFrame(raf_timer);
 
         if(touch){
@@ -607,7 +607,7 @@ WinBox.prototype.unmount = function(dest){
 
 WinBox.prototype.setTitle = function(title){
 
-    const node = getByClass(this.dom, "wb-title");
+    const node = getByClass(this.dom, this.title_cls);
     setText(node, this.title = title);
     return this;
 };
@@ -618,7 +618,7 @@ WinBox.prototype.setTitle = function(title){
 
 WinBox.prototype.setIcon = function(src){
 
-    const img = getByClass(this.dom, "wb-icon");
+    const img = getByClass(this.dom, this.icon_cls);
     setStyle(img, "background-image", "url(" + src + ")");
     setStyle(img, "display", "inline-block");
 
@@ -690,7 +690,7 @@ WinBox.prototype.focus = async function(state){
 
         setStyle(this.dom, "z-index", ++index_counter);
         this.index = index_counter;
-        this.addClass("wb-focus");
+        this.addClass(this.focus_cls);
         this.focused = true;
         this.onfocus && await this.onfocus();
     }
@@ -712,7 +712,7 @@ WinBox.prototype.blur = async function(state){
 
     if(this.focused){
 
-        this.removeClass("wb-focus");
+        this.removeClass(this.focus_cls);
         this.focused = false;
         this.onblur && await this.onblur();
     }
@@ -736,7 +736,7 @@ WinBox.prototype.hide = async function(state){
 
         this.onhide && await this.onhide();
         this.hidden = true;
-        return this.addClass("wb-hidden");
+        return this.addClass(this.hidden_cls);
     }
 };
 
@@ -756,7 +756,7 @@ WinBox.prototype.show = async function(state){
 
         this.onshow && await this.onshow();
         this.hidden = false;
-        return this.removeClass("wb-hidden");
+        return this.removeClass(this.hidden_cls);
     }
 };
 
@@ -779,7 +779,7 @@ WinBox.prototype.minimize = async function(state){
 
     if(this.max){
 
-        this.removeClass("wb-maximized");
+        this.removeClass(this.maximized_cls);
         this.max = false;
     }
 
@@ -788,7 +788,7 @@ WinBox.prototype.minimize = async function(state){
         stack_min.push(this);
         await update_min_stack();
         this.dom.title = this.title;
-        this.addClass("wb-minimized");
+        this.addClass(this.minimized_cls);
         this.min = true;
 
         if(this.focused){
@@ -844,7 +844,7 @@ WinBox.prototype.restore = async function(){
     if(this.max){
 
         this.max = false;
-        this.removeClass("wb-maximized");
+        this.removeClass(this.maximized_cls);
         await this.resize();
         await this.move();
         this.onrestore && await this.onrestore();
@@ -877,7 +877,7 @@ WinBox.prototype.maximize = async function(state){
 
     if(!this.max){
 
-        this.addClass("wb-maximized");
+        this.addClass(this.maximized_cls);
         await this.resize(
             root_w - this.left - this.right,
             root_h - this.top - this.bottom /* - 1 */,
@@ -1057,7 +1057,7 @@ WinBox.prototype.addControl = function(control){
     const click = control.click;
     const index = control.index;
     const node = document.createElement("span");
-    const icons = getByClass(this.dom, "wb-control");
+    const icons = getByClass(this.dom, this.control_cls);
     const self = this;
 
     if(classname) node.className = classname;
@@ -1185,7 +1185,36 @@ WinBox.prototype.initialize = async function(){
         onrestore,
         onhide,
         onshow,
-        onload;
+        onload,
+
+        window_cls,
+        modal_cls,
+        header_cls,
+        control_cls,
+        icon_cls,
+        title_cls,
+        body_cls,
+        min_cls,
+        minimized_cls,
+        max_cls,
+        maximized_cls,
+        no_max_cls,
+        full_cls,
+        no_full_cls,
+        no_move_cls,
+        lock_cls,
+        focus_cls,
+        hidden_cls,
+        drag_cls,
+        n_cls,
+        s_cls,
+        w_cls,
+        e_cls,
+        nw_cls,
+        ne_cls,
+        se_cls,
+        sw_cls,
+        close_cls;
 
     if(params){
 
@@ -1251,15 +1280,74 @@ WinBox.prototype.initialize = async function(){
             onhide = params["onhide"];
             onshow = params["onshow"];
             onload = params["onload"];
+
+	    window_cls = params["window_cls"];
+	    modal_cls = params["modal_cls"];
+	    header_cls = params["header_cls"];
+	    control_cls = params["control_cls"];
+	    icon_cls = params["icon_cls"];
+	    title_cls = params["title_cls"];
+	    body_cls = params["body_cls"];
+	    min_cls = params["min_cls"];
+	    minimized_cls = params["minimized_cls"];
+	    max_cls = params["max_cls"];
+	    maximized_cls = params["maximized_cls"];
+	    no_max_cls = params["no_max_cls"];
+	    full_cls = params["full_cls"];
+	    no_full_cls = params["no_full_cls"];
+	    no_move_cls = params["no_move_cls"];
+	    lock_cls = params["lock_cls"];
+	    focus_cls = params["focus_cls"];
+	    hidden_cls = params["hidden_cls"];
+	    drag_cls = params["drag_cls"];
+	    n_cls = params["n_cls"];
+	    s_cls = params["s_cls"];
+	    w_cls = params["w_cls"];
+	    e_cls = params["e_cls"];
+	    nw_cls = params["nw_cls"];
+	    ne_cls = params["ne_cls"];
+	    se_cls = params["se_cls"];
+	    sw_cls = params["sw_cls"];
+	    close_cls = params["close_cls"];
         }
     }
 
-    this.dom = template(tpl);
-    this.dom.id = this.id = id || ("winbox-" + (++id_counter));
-    this.dom.className = "winbox" + (classname ? " " + (typeof classname === "string" ? classname : classname.join(" ")) : "") + (modal ? " wb-modal" : "");
-    this.dom["winbox"] = this;
+    this.modal = modal;
+    this.window_cls = window_cls || "wb-window";
+    this.modal_cls = modal_cls || "wb-modal";
+    this.header_cls = header_cls || "wb-header";
+    this.control_cls = control_cls || "wb-control";
+    this.icon_cls = icon_cls || "wb-icon";
+    this.title_cls = title_cls || "wb-title";
+    this.body_cls = body_cls || "wb-body";
+    this.min_cls = min_cls || "wb-min";
+    this.minimized_cls = minimized_cls || "wb-minimized";
+    this.max_cls = max_cls || "wb-max";
+    this.maximized_cls = maximized_cls || "wb-maximized";
+    this.no_max_cls = no_max_cls || "wb-no-max";
+    this.full_cls = full_cls || "wb-full";
+    this.no_full_cls = no_full_cls || "wb-no-full";
+    this.no_move_cls = no_move_cls || "wb-no-move";
+    this.lock_cls = lock_cls || "wb-lock";
+    this.focus_cls = focus_cls || "wb-focus";
+    this.hidden_cls = hidden_cls || "wb-hidden";
+    this.drag_cls = drag_cls || "wb-drag";
+    this.n_cls = n_cls || "wb-n";
+    this.s_cls = s_cls || "wb-s";
+    this.w_cls = w_cls || "wb-w";
+    this.e_cls = e_cls || "wb-e";
+    this.nw_cls = nw_cls || "wb-nw";
+    this.ne_cls = ne_cls || "wb-ne";
+    this.se_cls = se_cls || "wb-se";
+    this.sw_cls = sw_cls || "wb-sw";
+    this.close_cls = close_cls || "wb-close";
+
+    this.dom = template(tpl, this);
+    this.dom.id = this.id = id || (this.window_cls + "-" + (++id_counter));
+    this.dom.className = this.window_cls + (classname ? " " + (typeof classname === "string" ? classname : classname.join(" ")) : "") + (modal ? " " + this.modal_cls : "");
+    this.dom[this.window_cls] = this;
     this.window = this.dom;
-    this.body = getByClass(this.dom, "wb-body");
+    this.body = getByClass(this.dom, this.body_cls);
     this.header = header || 35;
     //this.plugins = [];
 
@@ -1281,7 +1369,7 @@ WinBox.prototype.initialize = async function(){
 
     if(header){
 
-        const node = getByClass(this.dom, "wb-header");
+        const node = getByClass(this.dom, this.header_cls);
         setStyle(node, "height", header + "px");
         setStyle(node, "line-height", header + "px");
         setStyle(this.body, "top", header + "px");
@@ -1407,6 +1495,8 @@ WinBox.prototype.initialize = async function(){
     await register(this);
     (root || body).appendChild(this.dom);
     oncreate && await oncreate.call(this, params);
+
+    return this;
 };
 
 /*

@@ -2,44 +2,39 @@
  * @type {null|Element}
  */
 let template = null;
-const templateHTML = (
-
-    //'<div class=winbox>' +
-
-        '<div class=wb-header>' +
-            '<div class=wb-control>' +
-                '<span class=wb-min></span>' +
-                '<span class=wb-max></span>' +
-                '<span class=wb-full></span>' +
-                '<span class=wb-close></span>' +
-            '</div>' +
-            '<div class=wb-drag>'+
-                '<div class=wb-icon></div>' +
-                '<div class=wb-title></div>' +
-            '</div>' +
-        '</div>' +
-
-        '<div class=wb-body></div>' +
-
-        '<div class=wb-n></div>' +
-        '<div class=wb-s></div>' +
-        '<div class=wb-w></div>' +
-        '<div class=wb-e></div>' +
-        '<div class=wb-nw></div>' +
-        '<div class=wb-ne></div>' +
-        '<div class=wb-se></div>' +
-        '<div class=wb-sw></div>'
+function templateHTML(self) {
+    return `<div class=${self.header_cls}>
+              <div class=${self.control_cls}>
+                <span class=${self.min_cls}></span>
+                <span class=${self.max_cls}></span>
+                <span class=${self.full_cls}></span>
+                <span class=${self.close_cls}></span>
+              </div>
+              <div class=${self.drag_cls}>
+                <div class=${self.icon_cls}></div>
+                <div class=${self.title_cls}></div>
+              </div>
+            </div>
+            <div class=${self.body_cls}></div>
+            <div class=${self.n_cls}></div>
+            <div class=${self.s_cls}></div>
+            <div class=${self.w_cls}></div>
+            <div class=${self.e_cls}></div>
+            <div class=${self.nw_cls}></div>
+            <div class=${self.ne_cls}></div>
+            <div class=${self.se_cls}></div>
+            <div class=${self.sw_cls}></div>`;
 
     //'</div>'
-);
+}
 
 /**
  * @return {Element}
  */
-export default function(tpl){
+export default function(tpl, self){
     if (!template) {
         template = document.createElement('div');
-        template.innerHTML = templateHTML;
+        template.innerHTML = templateHTML(self);
     }
 
     return (tpl || template).cloneNode(true);

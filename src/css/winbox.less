@@ -1,7 +1,7 @@
 @import "images.less";
-@winbox-header-height: 35px;
+@wb-window-header-height: 35px;
 
-.winbox {
+.wb-window {
   position: fixed;
   left: 0;
   top: 0;
@@ -25,8 +25,8 @@
   left: 0;
   top: 0;
   width: 100%;
-  height: @winbox-header-height;
-  line-height: @winbox-header-height;
+  height: @wb-window-header-height;
+  line-height: @wb-window-header-height;
   color: #fff;
   overflow: hidden;
   z-index: 1;
@@ -34,7 +34,7 @@
 
 .wb-body {
   position: absolute;
-  top: @winbox-header-height;
+  top: @wb-window-header-height;
   left: 0;
   right: 0;
   bottom: 0;
@@ -101,7 +101,7 @@ body > .wb-body{
   right: -5px;
   bottom: 0;
   width: 10px;
-  cursor: w-resize;
+  cursor: e-resize;
   z-index: 2;
 }
 
@@ -111,7 +111,7 @@ body > .wb-body{
   left: 0;
   right: 0;
   height: 10px;
-  cursor: n-resize;
+  cursor: s-resize;
   z-index: 2;
 }
 
@@ -151,7 +151,7 @@ body > .wb-body{
   left: -5px;
   width: 15px;
   height: 15px;
-  cursor: ne-resize;
+  cursor: sw-resize;
   z-index: 2;
 }
 
@@ -161,7 +161,7 @@ body > .wb-body{
   right: -5px;
   width: 15px;
   height: 15px;
-  cursor: nw-resize;
+  cursor: se-resize;
   z-index: 2;
 }
 
@@ -205,7 +205,7 @@ body > .wb-body{
 }
 
 /*
-.winbox:not(.max) .wb-max {
+.wb-window:not(.max) .wb-max {
   background-image: url(@restore);
   background-size: 20px auto;
   background-position: center bottom 5px;
@@ -213,27 +213,27 @@ body > .wb-body{
 */
 
 /*
-.winbox:fullscreen{
+.wb-window:fullscreen{
   transition: none !important;
 }
-.winbox:fullscreen .wb-full{
+.wb-window:fullscreen .wb-full{
   background-image: url(@minimize);
 }
-.winbox:fullscreen > div,
-.winbox:fullscreen .wb-title,
+.wb-window:fullscreen > div,
+.wb-window:fullscreen .wb-title,
 */
 
-.winbox.wb-modal .wb-body ~ div,
-.winbox.wb-modal .wb-drag,
-.winbox.wb-minimized .wb-body ~ div,
-.winbox.wb-maximized .wb-body ~ div {
+.wb-window.wb-modal .wb-body ~ div,
+.wb-window.wb-modal .wb-drag,
+.wb-window.wb-minimized .wb-body ~ div,
+.wb-window.wb-maximized .wb-body ~ div {
   pointer-events: none;
 }
-.winbox.wb-maximized .wb-drag{
+.wb-window.wb-maximized .wb-drag{
   cursor: default;
 }
 
-.winbox.wb-minimized {
+.wb-window.wb-minimized {
   .wb-full,
   .wb-min {
     display: none;
@@ -246,27 +246,27 @@ body > .wb-body{
   }
 }
 
-.winbox.wb-hidden {
+.wb-window.wb-hidden {
   display: none;
   //visibility: hidden;
 }
 
-.winbox.wb-maximized {
+.wb-window.wb-maximized {
   box-shadow: none;
 }
 
-.winbox.wb-maximized .wb-body {
+.wb-window.wb-maximized .wb-body {
   margin: 0 !important;
 }
 
-.winbox iframe{
+.wb-window iframe{
   position: absolute;
   width: 100%;
   height: 100%;
   border: 0;
 }
 
-body.wb-lock .winbox{
+body.wb-lock .wb-window{
   will-change: left, top, width, height;
   transition: none;
 }
@@ -274,7 +274,7 @@ body.wb-lock iframe {
   pointer-events: none;
 }
 
-.winbox.wb-modal{
+.wb-window.wb-modal{
   &:before{
     content: '';
     position: absolute;
