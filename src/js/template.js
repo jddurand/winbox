@@ -35,6 +35,8 @@ export default function(tpl, self){
     if (!template) {
         template = document.createElement('div');
         template.innerHTML = templateHTML(self);
+        template.id = self.windowId;
+        template.className = self.windowClassName;
     }
 
     return (tpl || template).cloneNode(true);

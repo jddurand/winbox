@@ -1342,9 +1342,9 @@ WinBox.prototype.initialize = async function(){
     this.sw_cls = sw_cls || "wb-sw";
     this.close_cls = close_cls || "wb-close";
 
+    this.windowId = this.id = id || (this.window_cls + "-" + (++id_counter));
+    this.windowClassName = this.window_cls + (classname ? " " + (typeof classname === "string" ? classname : classname.join(" ")) : "") + (modal ? " " + this.modal_cls : "");
     this.dom = template(tpl, this);
-    this.dom.id = this.id = id || (this.window_cls + "-" + (++id_counter));
-    this.dom.className = this.window_cls + (classname ? " " + (typeof classname === "string" ? classname : classname.join(" ")) : "") + (modal ? " " + this.modal_cls : "");
     this.dom[this.window_cls] = this;
     this.window = this.dom;
     this.body = getByClass(this.dom, this.body_cls);
