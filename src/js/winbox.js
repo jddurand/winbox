@@ -303,7 +303,9 @@ async function update_min_stack(){
 function addWindowListener(self, dir, cls){
 
     const node = getByClass(self.dom, cls);
-    if(!node) return;
+    if(!node) {
+	return;
+    }
 
     let touch, x, y;
     let raf_timer, raf_move, raf_resize;
@@ -608,7 +610,9 @@ WinBox.prototype.unmount = function(dest){
 WinBox.prototype.setTitle = function(title){
 
     const node = getByClass(this.dom, this.title_cls);
-    setText(node, this.title = title);
+    if (node) {
+        setText(node, this.title = title);
+    }
     return this;
 };
 
@@ -619,8 +623,10 @@ WinBox.prototype.setTitle = function(title){
 WinBox.prototype.setIcon = function(src){
 
     const img = getByClass(this.dom, this.icon_cls);
-    setStyle(img, "background-image", "url(" + src + ")");
-    setStyle(img, "display", "inline-block");
+    if (img) {
+        setStyle(img, "background-image", "url(" + src + ")");
+        setStyle(img, "display", "inline-block");
+    }
 
     return this;
 };
@@ -631,7 +637,7 @@ WinBox.prototype.setIcon = function(src){
 
 WinBox.prototype.setBackground = function(background){
 
-    setStyle(this.dom, "background", background);
+    setStyle(this.window, "background", background);
     return this;
 };
 
@@ -1188,33 +1194,52 @@ WinBox.prototype.initialize = async function(){
         onload,
 
         window_cls,
+        window_style,
         modal_cls,
         header_cls,
+        header_style,
         control_cls,
+        control_style,
         icon_cls,
+        icon_style,
         title_cls,
+        title_style,
         body_cls,
+        body_style,
         min_cls,
+        min_style,
         minimized_cls,
         max_cls,
+        max_style,
         maximized_cls,
         no_max_cls,
         full_cls,
+        full_style,
         no_full_cls,
         no_move_cls,
         lock_cls,
         focus_cls,
         hidden_cls,
         drag_cls,
+        drag_style,
         n_cls,
+        n_style,
         s_cls,
+        s_style,
         w_cls,
+        w_style,
         e_cls,
+        e_style,
         nw_cls,
+        nw_style,
         ne_cls,
+        ne_style,
         se_cls,
+        se_style,
         sw_cls,
-        close_cls;
+        sw_style,
+        close_cls,
+        close_style;
 
     if(params){
 
@@ -1282,68 +1307,107 @@ WinBox.prototype.initialize = async function(){
             onload = params["onload"];
 
 	    window_cls = params["window_cls"];
+	    window_style = params["window_style"];
 	    modal_cls = params["modal_cls"];
 	    header_cls = params["header_cls"];
+	    header_style = params["header_style"];
 	    control_cls = params["control_cls"];
+	    control_style = params["control_style"];
 	    icon_cls = params["icon_cls"];
+	    icon_style = params["icon_style"];
 	    title_cls = params["title_cls"];
+	    title_style = params["title_style"];
 	    body_cls = params["body_cls"];
+	    body_style = params["body_style"];
 	    min_cls = params["min_cls"];
+	    min_style = params["min_style"];
 	    minimized_cls = params["minimized_cls"];
 	    max_cls = params["max_cls"];
+	    max_style = params["max_style"];
 	    maximized_cls = params["maximized_cls"];
 	    no_max_cls = params["no_max_cls"];
 	    full_cls = params["full_cls"];
+	    full_style = params["full_style"];
 	    no_full_cls = params["no_full_cls"];
 	    no_move_cls = params["no_move_cls"];
 	    lock_cls = params["lock_cls"];
 	    focus_cls = params["focus_cls"];
 	    hidden_cls = params["hidden_cls"];
 	    drag_cls = params["drag_cls"];
+	    drag_style = params["drag_style"];
 	    n_cls = params["n_cls"];
+	    n_style = params["n_style"];
 	    s_cls = params["s_cls"];
+	    s_style = params["s_style"];
 	    w_cls = params["w_cls"];
+	    w_style = params["w_style"];
 	    e_cls = params["e_cls"];
+	    e_style = params["e_style"];
 	    nw_cls = params["nw_cls"];
+	    nw_style = params["nw_style"];
 	    ne_cls = params["ne_cls"];
+	    ne_style = params["ne_style"];
 	    se_cls = params["se_cls"];
+	    se_style = params["se_style"];
 	    sw_cls = params["sw_cls"];
+	    sw_style = params["sw_style"];
 	    close_cls = params["close_cls"];
+	    close_style = params["close_style"];
         }
     }
 
     this.modal = modal;
     this.window_cls = window_cls || "wb-window";
+    this.window_style = window_style || "";
     this.modal_cls = modal_cls || "wb-modal";
     this.header_cls = header_cls || "wb-header";
+    this.header_style = header_style || "";
     this.control_cls = control_cls || "wb-control";
+    this.control_style = control_style || "";
     this.icon_cls = icon_cls || "wb-icon";
+    this.icon_style = icon_style || "";
     this.title_cls = title_cls || "wb-title";
+    this.title_style = title_style || "";
     this.body_cls = body_cls || "wb-body";
+    this.body_style = body_style || "";
     this.min_cls = min_cls || "wb-min";
+    this.min_style = min_style || "";
     this.minimized_cls = minimized_cls || "wb-minimized";
     this.max_cls = max_cls || "wb-max";
+    this.max_style = max_style || "";
     this.maximized_cls = maximized_cls || "wb-maximized";
     this.no_max_cls = no_max_cls || "wb-no-max";
     this.full_cls = full_cls || "wb-full";
+    this.full_style = full_style || "";
     this.no_full_cls = no_full_cls || "wb-no-full";
     this.no_move_cls = no_move_cls || "wb-no-move";
     this.lock_cls = lock_cls || "wb-lock";
     this.focus_cls = focus_cls || "wb-focus";
     this.hidden_cls = hidden_cls || "wb-hidden";
     this.drag_cls = drag_cls || "wb-drag";
+    this.drag_style = drag_style || "";
     this.n_cls = n_cls || "wb-n";
+    this.n_style = n_style || "";
     this.s_cls = s_cls || "wb-s";
+    this.s_style = s_style || "";
     this.w_cls = w_cls || "wb-w";
+    this.w_style = w_style || "";
     this.e_cls = e_cls || "wb-e";
+    this.e_style = e_style || "";
     this.nw_cls = nw_cls || "wb-nw";
+    this.nw_style = nw_cls || "";
     this.ne_cls = ne_cls || "wb-ne";
+    this.ne_style = ne_style || "";
     this.se_cls = se_cls || "wb-se";
+    this.se_style = se_style || "";
     this.sw_cls = sw_cls || "wb-sw";
+    this.sw_style = sw_style || "";
     this.close_cls = close_cls || "wb-close";
+    this.close_style = close_style || "";
 
     this.windowId = this.id = id || (this.window_cls + "-" + (++id_counter));
     this.windowClassName = this.window_cls + (classname ? " " + (typeof classname === "string" ? classname : classname.join(" ")) : "") + (modal ? " " + this.modal_cls : "");
+    this.windowStyle = this.window_style;
     this.dom = template(tpl, this);
     this.dom[this.window_cls] = this;
     this.window = this.dom;

@@ -500,9 +500,21 @@ Callback methods:
     </tr>
     <tr></tr>
     <tr>
+        <td>window_style</td>
+        <td>string</td>
+        <td>Style of the window - default to "".</td>
+    </tr>
+    <tr></tr>
+    <tr>
         <td>header_cls</td>
         <td>string</td>
         <td>Class of the header - default to "wb-header".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>header_style</td>
+        <td>string</td>
+        <td>Style of the header - default to "".</td>
     </tr>
     <tr></tr>
     <tr>
@@ -512,9 +524,21 @@ Callback methods:
     </tr>
     <tr></tr>
     <tr>
+        <td>control_style</td>
+        <td>string</td>
+        <td>Style of the control div - default to "".</td>
+    </tr>
+    <tr></tr>
+    <tr>
         <td>icon_cls</td>
         <td>string</td>
         <td>Class of the icon div - default to "wb-icon".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>icon_style</td>
+        <td>string</td>
+        <td>Style of the icon div - default to "".</td>
     </tr>
     <tr></tr>
     <tr>
@@ -524,9 +548,21 @@ Callback methods:
     </tr>
     <tr></tr>
     <tr>
+        <td>title_style</td>
+        <td>string</td>
+        <td>Style of the title div - default to "".</td>
+    </tr>
+    <tr></tr>
+    <tr>
         <td>body_cls</td>
         <td>string</td>
         <td>Class of the body div - default to "wb-body".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>body_style</td>
+        <td>string</td>
+        <td>Style of the body div - default to "".</td>
     </tr>
     <tr></tr>
     <tr>
@@ -542,6 +578,12 @@ Callback methods:
     </tr>
     <tr></tr>
     <tr>
+        <td>min_style</td>
+        <td>string</td>
+        <td>Style of the minimize span - default to "".</td>
+    </tr>
+    <tr></tr>
+    <tr>
         <td>minimized_cls</td>
         <td>string</td>
         <td>Class of the minimized span - default to "wb-minimized".</td>
@@ -551,6 +593,12 @@ Callback methods:
         <td>max_cls</td>
         <td>string</td>
         <td>Class of the maximize span - default to "wb-max".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>max_style</td>
+        <td>string</td>
+        <td>Style of the maximize span - default to "".</td>
     </tr>
     <tr></tr>
     <tr>
@@ -608,9 +656,21 @@ Callback methods:
     </tr>
     <tr></tr>
     <tr>
+        <td>drag_style</td>
+        <td>string</td>
+        <td>Style  of the span that holding drag capability - default to "".</td>
+    </tr>
+    <tr></tr>
+    <tr>
         <td>n_cls</td>
         <td>string</td>
         <td>Class of the span that holding north movement - default to "wb-n".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>n_style</td>
+        <td>string</td>
+        <td>Style of the span that holding north movement - default to "".</td>
     </tr>
     <tr></tr>
     <tr>
@@ -626,9 +686,21 @@ Callback methods:
     </tr>
     <tr></tr>
     <tr>
+        <td>w_style</td>
+        <td>string</td>
+        <td>Style of the span that holding west movement - default to "".</td>
+    </tr>
+    <tr></tr>
+    <tr>
         <td>e_cls</td>
         <td>string</td>
         <td>Class of the span that holding east movement - default to "wb-e".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>e_style</td>
+        <td>string</td>
+        <td>Style of the span that holding east movement - default to "".</td>
     </tr>
     <tr></tr>
     <tr>
@@ -638,9 +710,21 @@ Callback methods:
     </tr>
     <tr></tr>
     <tr>
+        <td>nw_style</td>
+        <td>string</td>
+        <td>Style of the span that holding north-west movement - default to "".</td>
+    </tr>
+    <tr></tr>
+    <tr>
         <td>ne_cls</td>
         <td>string</td>
         <td>Class of the span that holding north-east movement - default to "wb-ne".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>ne_style</td>
+        <td>string</td>
+        <td>Style of the span that holding north-east movement - default to "".</td>
     </tr>
     <tr></tr>
     <tr>
@@ -650,15 +734,33 @@ Callback methods:
     </tr>
     <tr></tr>
     <tr>
+        <td>se_style</td>
+        <td>string</td>
+        <td>Style of the span that holding south-east movement - default to "".</td>
+    </tr>
+    <tr></tr>
+    <tr>
         <td>sw_cls</td>
         <td>string</td>
         <td>Class of the span that holding south-west movement - default to "wb-sw".</td>
     </tr>
     <tr></tr>
     <tr>
+        <td>sw_style</td>
+        <td>string</td>
+        <td>Style of the span that holding south-west movement - default to "".</td>
+    </tr>
+    <tr></tr>
+    <tr>
         <td>close_cls</td>
         <td>string</td>
         <td>Class of the close span - default to "wb-close".</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>close_style</td>
+        <td>string</td>
+        <td>Style of the close span - default to "".</td>
     </tr>
 </table>
 
