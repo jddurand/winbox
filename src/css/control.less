@@ -1,0 +1,50 @@
+.wb-no-animation {
+  transition: none;
+}
+
+.wb-no-shadow {
+  box-shadow: none;
+}
+
+.wb-no-header {
+  .wb-header {
+    display: none;
+  }
+  .wb-body {
+    top: 0;
+  }
+}
+
+.wb-no-min .wb-min {
+  display: none;
+}
+
+.wb-no-max .wb-max {
+  display: none;
+}
+
+.wb-no-full .wb-full {
+  display: none;
+}
+
+.wb-no-close .wb-close {
+  display: none;
+}
+
+.wb-no-resize .wb-body ~ div {
+  display: none;
+}
+
+.wb-no-move:not(.wb-minimized) .wb-title {
+  pointer-events: none;
+}
+
+.wb-body .wb-hide {
+  display: none;
+}
+.wb-show {
+  display: none;
+}
+.wb-body .wb-show {
+  display: revert;
+}
