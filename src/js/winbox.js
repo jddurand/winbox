@@ -981,7 +981,7 @@ WinBox.prototype.close = async function(force) {
     this.unmount();
     this.dom.remove();
     this.dom.textContent = "";
-    this.dom["winbox"] = null;
+    this.dom[this.window_cls] = null;
     this.body = null;
     this.dom = null;
     this.focused && await focus_next();
