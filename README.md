@@ -308,6 +308,48 @@ Callback methods:
     </tr>
     <tr></tr>
     <tr>
+        <td>no_header</td>
+        <td>boolean</td>
+        <td>Disable header (no control, no drag, no icon, no title).</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>no_control</td>
+        <td>boolean</td>
+        <td>Disable controls (minimize, maximize, full and close buttons).</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>no_drag</td>
+        <td>boolean</td>
+        <td>Disable draggable actions.</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>no_icon</td>
+        <td>boolean</td>
+        <td>Disable icon.</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>no_title</td>
+        <td>boolean</td>
+        <td>Disable title.</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>no_body</td>
+        <td>boolean</td>
+        <td>Disable body.</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>no_resize</td>
+        <td>boolean</td>
+        <td>Disable resize.</td>
+    </tr>
+    <tr></tr>
+    <tr>
         <td>mount</td>
         <td>HTMLElement</td>
         <td>Mount an element (widget, template, etc.) to the window body.</td>

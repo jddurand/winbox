@@ -1193,6 +1193,13 @@ WinBox.prototype.initialize = async function(){
         onshow,
         onload,
 
+        no_header,
+        no_control,
+        no_drag,
+        no_icon,
+        no_title,
+        no_body,
+        no_resize,
         window_cls,
         window_style,
         modal_cls,
@@ -1306,6 +1313,13 @@ WinBox.prototype.initialize = async function(){
             onshow = params["onshow"];
             onload = params["onload"];
 
+	    no_header = params["no_header"];
+	    no_control = params["no_control"];
+	    no_drag = params["no_drag"];
+	    no_icon = params["no_icon"];
+	    no_title = params["no_title"];
+	    no_body = params["no_body"];
+	    no_resize = params["no_resize"];
 	    window_cls = params["window_cls"];
 	    window_style = params["window_style"];
 	    modal_cls = params["modal_cls"];
@@ -1357,6 +1371,13 @@ WinBox.prototype.initialize = async function(){
     }
 
     this.modal = modal;
+    this.no_header = no_header;
+    this.no_control = no_control;
+    this.no_drag = no_drag;
+    this.no_icon = no_icon;
+    this.no_title = no_title;
+    this.no_body = no_body;
+    this.no_resize = no_resize;
     this.window_cls = window_cls || "wb-window";
     this.window_style = window_style || "";
     this.modal_cls = modal_cls || "wb-modal";
